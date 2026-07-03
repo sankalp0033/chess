@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional chess analysis board with Stockfish engine, evaluation bar, move list, and more.">
+    <title>Chess Analysis</title>
+
+    <!-- External Dependencies -->
+    <!-- chessboard.js CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.css">
+    
+    <!-- Project Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Favicon (optional) -->
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+</head>
+<body>
+    <!-- Main Application Container -->
+    <div id="app" class="app-container">
+        
+        <!-- Header / Top Bar -->
+        <header class="app-header">
+            <h1 class="app-title">Chess Analysis</h1>
+            <!-- Could include theme toggle, settings, etc. -->
+        </header>
+
+        <!-- Main Content: Board + Sidebar -->
+        <main class="main-content">
+            
+            <!-- Board Area: Evaluation Bar + Board + Board Controls -->
+            <div class="board-area">
+                <div class="board-with-eval">
+                    <!-- Evaluation Bar (vertical) -->
+                    <div class="eval-bar-container">
+                        <div class="eval-bar" id="evalBar">
+                            <div class="eval-fill" id="evalFill"></div>
+                        </div>
+                        <span class="eval-text" id="evalText">0.0</span>
+                    </div>
+
+                    <!-- Chessboard container -->
+                    <div id="board" class="chessboard"></div>
+                </div>
+
+                <!-- Board Controls (below board on desktop, could be placed elsewhere on mobile) -->
+                <div class="board-controls">
+                    <button id="startGameBtn" class="btn btn-primary">Start Game</button>
+                    <button id="newGameBtn" class="btn btn-secondary">New Game</button>
+                    <button id="undoBtn" class="btn btn-secondary">Undo</button>
+                    <button id="flipBtn" class="btn btn-secondary">Flip Board</button>
+                </div>
+            </div>
+
+            <!-- Sidebar: Move List, Analysis Panel, Engine Settings -->
+            <aside class="sidebar">
+                <!-- Engine Settings -->
+                <div class="panel engine-settings">
+                    <h3 class="panel-title">Engine Settings</h3>
+                    
+                    <div class="setting-group">
+                        <label for="depthSelect">Depth:</label>
+                        <select id="depthSelect" class="select-input">
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                            <option value="20" selected>20</option>
+                            <option value="25">25</option>
+                            <option value="30">30</option>
+                        </select>
+                    </div>
+
+                    <div class="setting-group">
+                        <label for="eloSlider">Elo: <span id="eloValue">2000</span></label>
+                        <input type="range" id="eloSlider" class="range-input" min="400" max="3200" value="2000" step="100">
+                    </div>
+                </div>
+
+                <!-- Analysis Panel (best lines, evaluation) -->
+                <div class="panel analysis-panel">
+                    <h3 class="panel-title">Analysis</h3>
+                    <div id="analysisLines" class="analysis-lines">
+                        <p class="placeholder-text">Engine lines will appear here.</p>
+                    </div>
+                </div>
+
+                <!-- Move List -->
+                <div class="panel move-list-panel">
+                    <h3 class="panel-title">Moves</h3>
+                    <div id="moveList" class="move-list">
+                        <p class="placeholder-text">No moves yet.</p>
+                    </div>
+                </div>
+            </aside>
+        </main>
+
+        <!-- Footer (optional) -->
+        <footer class="app-footer">
+            <p>Powered by Stockfish | <a href="#">About</a></p>
+        </footer>
+    </div>
+
+    <!-- JavaScript Dependencies -->
+    <!-- chess.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.12.0/chess.min.js"></script>
+    <!-- chessboard.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.js"></script>
+    <!-- Stockfish.js (Web Worker / WASM) - Placeholder: adjust path to your hosted Stockfish -->
+    <!-- You can use a CDN like https://cdn.jsdelivr.net/npm/stockfish.js@10.0.2/stockfish.js or host locally -->
+    <script src="js/stockfish.js"></script>
+
+    <!-- Main Application Script -->
+    <script src="js/main.js"></script>
+</body>
+</html>
